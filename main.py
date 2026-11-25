@@ -29,6 +29,8 @@ def main() -> None:
         raise ValueError(
             "entry must be 1 to %d characters, got %d" % (MAX_CHARS, len(text))
         )
+    if "\n" in text:
+        raise ValueError("entry must be a single line")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as handle:
         handle.write(text)
